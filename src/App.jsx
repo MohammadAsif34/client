@@ -1,0 +1,40 @@
+import React from "react";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import Home from "./pages/home/Home";
+import Login from "./pages/login/Login";
+import Error404 from "./pages/error404/Error404";
+import Navbar from "./components/navbar/Navbar";
+import TripList from "./pages/trip-list/TripList";
+import Footer from "./components/footer/Footer";
+import Regsiter from "./pages/register/Regsiter";
+
+const App = () => {
+  const Layout = () => {
+    return (
+      <>
+        <Navbar />
+        <Outlet />
+        <Footer />
+      </>
+    );
+  };
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Layout />,
+      children: [
+        { path: "/", element: <Home /> },
+        { path: "/trip-list", element: <TripList /> },
+        // { path: "/", element: <Home /> },
+        // { path: "/", element: <Home /> },
+
+        { path: "/login", element: <Login /> },
+        { path: "/register", element: <Regsiter /> },
+      ],
+    },
+    { path: "*", element: <Error404 /> },
+  ]);
+  return <RouterProvider router={router} />;
+};
+
+export default App;
