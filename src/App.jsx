@@ -1,5 +1,10 @@
 import React from "react";
-import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  createHashRouter,
+  Outlet,
+  RouterProvider,
+} from "react-router-dom";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import Error404 from "./pages/error404/Error404";
@@ -18,7 +23,7 @@ const App = () => {
       </>
     );
   };
-  const router = createBrowserRouter([
+  const router = createHashRouter([
     {
       path: "/",
       element: <Layout />,
